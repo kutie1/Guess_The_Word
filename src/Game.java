@@ -8,6 +8,8 @@ import java.util.*;
    // відгадано ano
    toString(guessedWord) = "_o_n_a_n";
 3. Між usedSymbols постав пробіл.
+TODO:
+  4. Показувати usedLetters відсортовано за алфавітом
  */
 
 public class Game {
@@ -53,18 +55,6 @@ public class Game {
         boolean present = false;
         while (lifeLeft > 0){
             if (lifeLeft == 8){
-//                System.out.println("\n" +
-//                        "    \n" +
-//                        "                               Word:\n" +
-//                        "                               " + toString(guessedWord) + "\n" +
-//                        "                                     \n" +
-//                        "                                \n" +
-//                        "\n" +
-//                        "\n" +
-//                        "_________________________\n" +
-//                        "\n" +
-//                        "Used symbols:\n" +
-//                        usedLetters + "\n");
                 System.out.printf("""
                         .                                Word:
                         .                                %s
@@ -76,19 +66,8 @@ public class Game {
                         
                              Used symbols:
                              %s
-                        """, toString(guessedWord), usedLetters);
+                        """, toString(guessedWord), sortedUsedLetter(usedLetters));
             } else if (lifeLeft == 7) {
-//                System.out.println("\n" +
-//                        "                         |      Word:\n" +
-//                        "                         |" + "    " + toString(guessedWord) + "\n" +
-//                        "                         |           \n" +
-//                        "                         |\n" +
-//                        "                         |\n" +
-//                        "                         |\n" +
-//                        "_________________________|\n" +
-//                        "\n" +
-//                        "     Used symbols:\n" +
-//                        usedLetters + "\n");
                 System.out.printf("""
                         .                         |      Word:
                         .                         |      %s
@@ -100,19 +79,8 @@ public class Game {
                         
                              Used symbols:
                              %s
-                        """, toString(guessedWord), usedLetters);
+                        """, toString(guessedWord), sortedUsedLetter(usedLetters));
             } else if (lifeLeft == 6) {
-//                System.out.println("             " + "____________\n" +
-//                        "                         |      Word:\n" +
-//                        "                         |" + "    " + toString(guessedWord) + "\n" +
-//                        "                         |            \n" +
-//                        "                         |\n" +
-//                        "                         |\n" +
-//                        "                         |\n" +
-//                        "_________________________|\n" +
-//                        "\n" +
-//                        "     Used symbols:\n" +
-//                        usedLetters + "\n");
                 System.out.printf("""
                         .              ____________
                         .                         |      Word:
@@ -125,20 +93,8 @@ public class Game {
                         
                              Used symbols:
                              %s
-                        """, toString(guessedWord), usedLetters);
+                        """, toString(guessedWord), sortedUsedLetter(usedLetters));
             } else if (lifeLeft == 5) {
-//                System.out.println("\n" +
-//                        "             ____________\n" +
-//                        "                |        |      Word:\n" +
-//                        "                         |" + "      " + toString(guessedWord) + "\n" +
-//                        "                         |           \n" +
-//                        "                         |\n" +
-//                        "                         |\n" +
-//                        "                         |\n" +
-//                        "_________________________|\n" +
-//                        "\n" +
-//                        "     Used symbols:\n" +
-//                        usedLetters + "\n");
                 System.out.printf("""
                         .              ____________
                         .                |        |      Word:
@@ -151,20 +107,8 @@ public class Game {
                         
                              Used symbols:
                              %s
-                        """, toString(guessedWord), usedLetters);
+                        """, toString(guessedWord), sortedUsedLetter(usedLetters));
             } else if (lifeLeft == 4) {
-//                System.out.println("\n" +
-//                        "             ____________\n" +
-//                        "                |        |      Word:\n" +
-//                        "               ( )       |" + "      " + toString(guessedWord) + "\n" +
-//                        "                         |           \n" +
-//                        "                         |\n" +
-//                        "                         |\n" +
-//                        "                         |\n" +
-//                        "_________________________|\n" +
-//                        "\n" +
-//                        "     Used symbols:\n" +
-//                        usedLetters + "\n");
                 System.out.printf("""
                         .              ____________
                         .                |        |      Word:
@@ -177,20 +121,8 @@ public class Game {
                         
                              Used symbols:
                              %s
-                        """, toString(guessedWord), usedLetters);
+                        """, toString(guessedWord), sortedUsedLetter(usedLetters));
             } else if (lifeLeft == 3) {
-//                System.out.println("\n" +
-//                        "             ____________\n" +
-//                        "                |        |      Word:\n" +
-//                        "               ( )       |" + "      " + toString(guessedWord) + "\n" +
-//                        "               / \\       |      \n" +
-//                        "                         |\n" +
-//                        "                         |\n" +
-//                        "                         |\n" +
-//                        "_________________________|\n" +
-//                        "\n" +
-//                        "     Used symbols:\n" +
-//                        usedLetters + "\n");
                 System.out.printf("""
                         .              ____________
                         .                |        |      Word:
@@ -203,7 +135,7 @@ public class Game {
                        
                              Used symbols:
                              %s
-                        """, toString(guessedWord), usedLetters);
+                        """, toString(guessedWord), sortedUsedLetter(usedLetters));
             } else if (lifeLeft == 2){
                 System.out.printf("""
                         .              ____________
@@ -217,30 +149,8 @@ public class Game {
                          
                              Used symbols:
                              %s
-                        """, toString(guessedWord), usedLetters);
-//                System.out.println("        ____________\n" +
-//                        "                |        |      Word:\n" +
-//                        "               ( )       |" + "      " + toString(guessedWord) + "\n" +
-//                        "               /|\\       |      \n" +
-//                        "                |        |\n" +
-//                        "                         |\n" +
-//                        "                         |\n" +
-//                        "_________________________|\n" +
-//                        "\n" +
-//                        "     Used symbols:\n" +
-//                        usedLetters + "\n");
+                        """, toString(guessedWord), sortedUsedLetter(usedLetters));
             } else if (lifeLeft == 1){
-//                System.out.println("        ____________\n" +
-//                        "                |        |      Word:\n" +
-//                        "               ( )       |" + "      " + toString(guessedWord) + "\n" +
-//                        "               /|\\       |      \n" +
-//                        "                |        |\n" +
-//                        "               /         |\n" +
-//                        "                         |\n" +
-//                        "_________________________|\n" +
-//                        "\n" +
-//                        "     Used symbols:\n" +
-//                        usedLetters + "\n");
                 System.out.printf("""
                         .              ____________
                         .                |        |      Word:
@@ -253,7 +163,7 @@ public class Game {
                          
                              Used symbols:
                              %s
-                        """, toString(guessedWord), usedLetters);
+                        """, toString(guessedWord), sortedUsedLetter(usedLetters));
             }
             System.out.print("Enter a letter: ");
             char current = scanner.nextLine().toLowerCase().charAt(0);
@@ -265,7 +175,8 @@ public class Game {
                 System.out.println("You've already used that letter.");
                 continue;
             }
-            usedLetters.append(current).append(" ");
+            usedLetters.append(current);
+//            usedLetters.append(current).append(" ");
 
             // перевірка чи присутня буква у слові
             present = hiddenWord.contains(String.valueOf(current));
@@ -287,17 +198,6 @@ public class Game {
         }
 
         // програш:
-//        System.out.println("        ____________\n" +
-//                "                |        |      Word:\n" +
-//                "               ( )       |" + "      " + Arrays.toString(guessedWord) + "\n" +
-//                "               /|\\      |      \n" +
-//                "                |        |\n" +
-//                "               / \\      |\n" +
-//                "                         |\n" +
-//                "_________________________|\n" +
-//                "\n" +
-//                "     Used symbols:\n" +
-//                usedLetters + "\n");
         System.out.printf("""
                 .              ____________
                 .                |        |      Word:
@@ -313,6 +213,15 @@ public class Game {
                 """, toString(guessedWord), usedLetters);
         System.out.println("You are lose");
         System.out.println("This word is: " + hiddenWord);
+    }
+
+    static String sortedUsedLetter(StringBuilder usedLetters) {
+        char[] arr = new char[usedLetters.length()];
+        for (int i = 0; i < usedLetters.length(); i++) {
+            arr[i] = usedLetters.charAt(i);
+        }
+        Arrays.sort(arr);
+        return toString(arr);
     }
 
     public static void main(String[] args) {
