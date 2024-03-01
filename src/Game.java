@@ -210,7 +210,7 @@ public class Game {
                  
                      Used symbols:
                      %s
-                """, toString(guessedWord), usedLetters);
+                """, toString(guessedWord), sortedUsedLetter(usedLetters));
         System.out.println("You are lose");
         System.out.println("This word is: " + hiddenWord);
     }
@@ -221,7 +221,11 @@ public class Game {
             arr[i] = usedLetters.charAt(i);
         }
         Arrays.sort(arr);
-        return toString(arr);
+        StringBuilder result = new StringBuilder();
+        for (char c : arr) {
+            result.append(c + " ");
+        }
+        return result.toString();
     }
 
     public static void main(String[] args) {
